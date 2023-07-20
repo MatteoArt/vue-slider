@@ -18,14 +18,57 @@ const app = Vue.createApp({
                 }, {
                     image: 'img/04.webp',
                     title: 'Stray',
-                    text: 'Lost, injured and alone, a stray cat must untangle an ancient mystery to escape a long-forgotten city',
+                    text: 'Lost, injured and alone, a stray cat must untangle an ancient mystery to escape a long-forgotten city.',
                 }, {
                     image: 'img/05.webp',
                     title: "Marvel's Avengers",
                     text: 'Marvel\'s Avengers is an epic, third-person, action-adventure game that combines an original, cinematic story with single-player and co-operative gameplay.',
                 }
             ],
+            activeImageIndex: 0,
+            classes: "d-none",
+            visible: "d-block",
+            active: "active"
+        }
+    },
+    methods: {
+        //funzioni che controllano se aggiungere o meno la classe visible e active
+        show(index) {
+            if (index === this.activeImageIndex) {
+                return this.visible;
+            } else {
+                return '';
+            }
+        },
+        showAct(index) {
+            if (index === this.activeImageIndex) {
+                return this.active;
+            } else {
+                return '';
+            }
+        },
 
+        prevClick() {
+            
+            const limit = this.slides.length - 1;
+
+            if (this.activeImageIndex === 0) {
+                this.activeImageIndex = limit;
+            } else {
+                this.activeImageIndex = this.activeImageIndex - 1;
+            }
+        },
+        nextClick() {
+            const limit = this.slides.length - 1;
+            if (this.activeImageIndex === limit) {
+                this.activeImageIndex = 0;
+            } else {
+                this.activeImageIndex = this.activeImageIndex + 1;
+            }
+            
+        },
+        onThumb(index) {
+            this.activeImageIndex = index;
         }
     }
 });

@@ -16,26 +16,29 @@
 
         <div class="container">
             <div class="slider-wrapper" tabindex="0">
-
-                <div class="item">
-                    <img src="img/01.webp" alt="Spiderman" />
+                <div class="item" v-for="(slide, i) in slides" v-bind:class="classes + ' ' + show(i)">
+                    <img v-bind:src="slide.image" v-bind:alt="slide.title">
                     <div class="text">
-                        <h3>Spiderman jjjj</h3>
+                        <h3>{{ slide.title }}</h3>
                         <p>
-                            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et temporibus voluptatum suscipit
-                            tempore aliquid deleniti aut
-                            veniam inventore eligendi ex ad ullam, cumque provident totam omnis, magnam dolores dolorum
-                            corporis.
+                            {{ slide.text }}
                         </p>
                     </div>
                 </div>
-              
+
 
                 <div class="thumbs">
-                    <div class="prev"></div>
-                    <div class="next"></div>
+                    <div class="prev" @click="prevClick"></div>
+                    <div class="next" @click="nextClick"></div>
+                    <div class="thumb" 
+                    v-for="(slide, i) in slides" 
+                    v-bind:class="showAct(i)"
+                    @click="onThumb(i)">
+                        <img v-bind:src="slide.image" v-bind:alt="slide.title">
+                    </div>
+                    <!-- 
                     <div class="thumb active">
-                        <img src="img/01.webp" alt="Svezia" />
+                        <img src="img/01.webp" alt="Spiderman" />
                     </div>
                     <div class="thumb">
                         <img src="img/02.webp" alt="Ratchet & Clank" />
@@ -49,6 +52,7 @@
                     <div class="thumb">
                         <img src="img/05.webp" alt="Avengers" />
                     </div>
+                -->
                 </div>
 
             </div>
