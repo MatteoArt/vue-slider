@@ -3,7 +3,13 @@
     padding: 0;
     box-sizing: border-box;
 }
-
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+h1.title {
+    margin-top: 15px;
+    text-align: center;
+}
 .container {
     height: 100vh;
     display: flex;
@@ -31,10 +37,12 @@
 
 .item .text {
     position: absolute;
-    right: 20px;
-    bottom: 20px;
+    right: 0;
+    bottom: 0;
+    padding: 20px;
     text-align: right;
     color: white;
+    background-color: rgba(0, 0, 0, 0.3);
 }
 
 .thumbs {

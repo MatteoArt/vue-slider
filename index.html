@@ -14,6 +14,7 @@
 
     <div id="app">
 
+        <h1 class="title">VueJS Carousel</h1>
         <div class="container">
             <div class="slider-wrapper" tabindex="0">
                 <div class="item" v-for="(slide, i) in slides" v-bind:class="classes + ' ' + show(i)">
@@ -30,10 +31,7 @@
                 <div class="thumbs">
                     <div class="prev" @click="prevClick"></div>
                     <div class="next" @click="nextClick"></div>
-                    <div class="thumb" 
-                    v-for="(slide, i) in slides" 
-                    v-bind:class="showAct(i)"
-                    @click="onThumb(i)">
+                    <div class="thumb" v-for="(slide, i) in slides" v-bind:class="showAct(i)" @click="onThumb(i)">
                         <img v-bind:src="slide.image" v-bind:alt="slide.title">
                     </div>
                     <!-- 
