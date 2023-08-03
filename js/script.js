@@ -28,7 +28,8 @@ const app = Vue.createApp({
             activeImageIndex: 0,
             classes: "d-none",
             visible: "d-block",
-            active: "active"
+            active: "active",
+            intervalTimerId: null //conterrà l'id del timer che è stato attivato, di default è null
         }
     },
     methods: {
@@ -69,7 +70,29 @@ const app = Vue.createApp({
         },
         onThumb(index) {
             this.activeImageIndex = index;
+        },
+        intervalNextSlider() {
+            //controllo di sicurezza per vedere se ci sta un timer già attivo
+            //se si lo fermo
+            if (this.intervalTimerId) {
+                this.stopInterval();
+            }
+
+            this.intervalTimerId = setInterval(() => {
+                const limit = this.slides.length - 1;
+                if (this.activeImageIndex === limit) {
+                    this.activeImageIndex = 0;
+                } else {
+                    this.activeImageIndex = this.activeImageIndex + 1;
+                }
+            },3000);
+        },
+        stopInterval() {
+            clearInterval(this.intervalTimerId);
         }
+    },
+    mounted() {
+        this.intervalNextSlider();
     }
 });
 

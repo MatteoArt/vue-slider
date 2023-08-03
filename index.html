@@ -16,7 +16,8 @@
 
         <h1 class="title">VueJS Carousel</h1>
         <div class="container">
-            <div class="slider-wrapper" tabindex="0">
+            <div class="slider-wrapper" tabindex="0"
+            @mouseover="stopInterval" @mouseout="intervalNextSlider">
                 <div class="item" v-for="(slide, i) in slides" v-bind:class="classes + ' ' + show(i)">
                     <img v-bind:src="slide.image" v-bind:alt="slide.title">
                     <div class="text">
